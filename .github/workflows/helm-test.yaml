@@ -23,7 +23,7 @@ jobs:
         with:
           version: latest
 
-      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.10"
 
@@ -72,7 +72,7 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Install Flux CLI
-        uses: fluxcd/flux2/action@1fd61a06264d71cf445ed55c4f14d401d26a1c64 # main
+        uses: fluxcd/flux2/action@dcc7def046cba2fe8d15d9737a4c250100f62fe0 # main
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Install Source controller
