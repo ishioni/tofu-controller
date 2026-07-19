@@ -10,14 +10,14 @@ release:
   header: |
     ## Changelog
 
-    [{{.Tag}} changelog](https://github.com/flux-iac/{{.ProjectName}}/blob/{{.Tag}}/CHANGELOG.md)
+    [{{.Tag}} changelog](https://github.com/{{ .Env.GITHUB_REPOSITORY }}/blob/{{.Tag}}/CHANGELOG.md)
 
   footer: |
     ## Container images
 
-    - `ghcr.io/flux-iac/{{.ProjectName}}:{{.Tag}}`
-    - `ghcr.io/flux-iac/tf-runner:{{.Tag}}`
-    - `ghcr.io/flux-iac/tf-runner:{{.Tag}}-base`
+    - `ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/{{.ProjectName}}:{{.Tag}}`
+    - `ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/tf-runner:{{.Tag}}`
+    - `ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/tf-runner:{{.Tag}}-base`
 
     Supported architectures: `linux/amd64`, `linux/arm64` and `linux/arm/v7`.
 
@@ -77,19 +77,3 @@ signs:
       - "--yes"
     artifacts: checksum
     output: true
-
-brews:
-  - name: tfctl
-    ids:
-    - tfctl
-    repository:
-      owner: flux-iac
-      name: homebrew-tap
-      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
-    commit_author:
-      name: flux-iac
-      email: noreply@github.com
-    directory: Formula
-    homepage: https://flux-iac.github.io/tofu-controller
-    install: |
-      bin.install "tfctl"

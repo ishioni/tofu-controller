@@ -26,12 +26,12 @@ podLabels: {}
 replicaCount: 1
 image:
   # -- Controller image repository
-  repository: ghcr.io/flux-iac/tofu-controller
+  repository: ghcr.io/ishioni/tofu-controller
   # -- Controller image pull policy
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
   # @default -- `.Chart.AppVersion`
-  tag: "v0.16.4"
+  tag: "v0.16.5-ishioni.1"
 # -- Controller image pull secret
 imagePullSecrets: []
 # -- Resource limits and requests
@@ -132,10 +132,10 @@ awsPackage:
 runner:
   image:
     # -- Runner image repository
-    repository: ghcr.io/flux-iac/tf-runner
+    repository: ghcr.io/ishioni/tf-runner
     # -- Runner image tag
     # @default -- `.Chart.AppVersion`
-    tag: "v0.16.4"
+    tag: "v0.16.5-ishioni.1"
   grpc:
     # -- Maximum GRPC message size (Controller)
     maxMessageSize: 4
@@ -194,7 +194,7 @@ metrics:
 branchPlanner:
   enabled: false
   image:
-    repository: ghcr.io/flux-iac/branch-planner
+    repository: ghcr.io/ishioni/branch-planner
     pullPolicy: IfNotPresent
     tag: ""
   # Additional deployment labels for the branch-planner

@@ -2,7 +2,7 @@
 
 {{ template "chart.badgesSection" . }}
 
-This is the Helm chart for the [Tofu Controller](https://github.com/flux-iac/tofu-controller), an IAC controller for Flux [Flux](https://fluxcd.io) to reconcile OpenTofu and Terraform resources in the GitOps way.
+This is the Helm chart for the [Tofu Controller](https://github.com/ishioni/tofu-controller), an IAC controller for Flux [Flux](https://fluxcd.io) to reconcile OpenTofu and Terraform resources in the GitOps way.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ To install tofu-controller manually using Helm:
 
 ```shell
 # Add tofu-controller helm repository
-helm repo add tofu-controller https://flux-iac.github.io/tofu-controller/
+helm repo add tofu-controller https://ishioni.github.io/tofu-controller/
 
 # Install tofu-controller
 helm upgrade -i tofu-controller tofu-controller/tofu-controller \

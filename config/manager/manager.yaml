@@ -23,7 +23,7 @@ spec:
         fsGroup: 1337
       containers:
       - name: manager
-        image: flux-iac/tofu-controller
+        image: ghcr.io/ishioni/tofu-controller
         imagePullPolicy: IfNotPresent
         args:
         - --watch-all-namespaces
@@ -44,7 +44,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: RUNNER_POD_IMAGE
-          value: flux-iac/tf-runner
+          value: ghcr.io/ishioni/tf-runner:v0.16.5-ishioni.1
         securityContext:
           capabilities:
             drop: ["ALL"]

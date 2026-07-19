@@ -18,6 +18,7 @@ permissions:
 env:
   VERSION: ${{ github.event.inputs.version || github.event.client_payload.version }}
   BUILD_DATE: ${{ github.event.inputs.build_date || github.event.client_payload.build_date }}
+  REGISTRY_OWNER: ${{ github.repository_owner }}
   LIBCRYPTO_VERSION: "3.5.7-r0"
 
 jobs:
@@ -57,7 +58,7 @@ jobs:
             LIBCRYPTO_VERSION=${{ env.LIBCRYPTO_VERSION }}
           platforms: linux/amd64,linux/arm64 #,linux/arm/v7
           tags: |
-            ghcr.io/flux-iac/tf-runner:${{ env.VERSION }}-base
+            ghcr.io/${{ env.REGISTRY_OWNER }}/tf-runner:${{ env.VERSION }}-base
           labels: |
             org.opencontainers.image.title=${{ github.event.repository.name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}
@@ -104,11 +105,11 @@ jobs:
           file: ./runner.Dockerfile
           platforms: linux/amd64,linux/arm64 #,linux/arm/v7
           build-args: |
-            BASE_IMAGE=ghcr.io/flux-iac/tf-runner:${{ env.VERSION }}-base
+            BASE_IMAGE=ghcr.io/${{ env.REGISTRY_OWNER }}/tf-runner:${{ env.VERSION }}-base
             TF_VERSION=${{ matrix.tf_version }}
             LIBCRYPTO_VERSION=${{ env.LIBCRYPTO_VERSION }}
           tags: |
-            ghcr.io/flux-iac/tf-runner:${{ env.VERSION }}-tf-${{ matrix.tf_version }}
+            ghcr.io/${{ env.REGISTRY_OWNER }}/tf-runner:${{ env.VERSION }}-tf-${{ matrix.tf_version }}
           labels: |
             org.opencontainers.image.title=${{ github.event.repository.name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}

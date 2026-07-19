@@ -1,8 +1,8 @@
 # Tofu Controller
 
-![Version: 0.16.4](https://img.shields.io/badge/Version-0.16.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.16.4](https://img.shields.io/badge/AppVersion-v0.16.4-informational?style=flat-square)
+![Version: 0.16.5-ishioni.1](https://img.shields.io/badge/Version-0.16.5-ishioni.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.16.5-ishioni.1](https://img.shields.io/badge/AppVersion-v0.16.5-ishioni.1-informational?style=flat-square)
 
-This is the Helm chart for the [Tofu Controller](https://github.com/flux-iac/tofu-controller), an IAC controller for Flux [Flux](https://fluxcd.io) to reconcile OpenTofu and Terraform resources in the GitOps way.
+This is the Helm chart for the [Tofu Controller](https://github.com/ishioni/tofu-controller), an IAC controller for Flux [Flux](https://fluxcd.io) to reconcile OpenTofu and Terraform resources in the GitOps way.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ To install tofu-controller manually using Helm:
 
 ```shell
 # Add tofu-controller helm repository
-helm repo add tofu-controller https://flux-iac.github.io/tofu-controller/
+helm repo add tofu-controller https://ishioni.github.io/tofu-controller/
 
 # Install tofu-controller
 helm upgrade -i tofu-controller tofu-controller/tofu-controller \
@@ -39,7 +39,7 @@ __Note__: If you need to use the `imagePullSecrets` it would be best to set `ser
 | awsPackage.install | bool | `true` |  |
 | awsPackage.repository | string | `"ghcr.io/flux-iac/aws-primitive-modules"` |  |
 | awsPackage.tag | string | `"v4.38.0-v1alpha11"` |  |
-| branchPlanner | object | `{"configMap":"branch-planner","deploymentLabels":{},"enabled":false,"image":{"pullPolicy":"IfNotPresent","repository":"ghcr.io/flux-iac/branch-planner","tag":""},"podSecurityContext":{"fsGroup":1337},"pollingInterval":"30s","resources":{"limits":{"cpu":"1000m","memory":"1Gi"},"requests":{"cpu":"200m","memory":"64Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsNonRoot":true,"runAsUser":65532,"seccompProfile":{"type":"RuntimeDefault"}},"sourceInterval":"30s"}` | Branch Planner-specific configurations |
+| branchPlanner | object | `{"configMap":"branch-planner","deploymentLabels":{},"enabled":false,"image":{"pullPolicy":"IfNotPresent","repository":"ghcr.io/ishioni/branch-planner","tag":""},"podSecurityContext":{"fsGroup":1337},"pollingInterval":"30s","resources":{"limits":{"cpu":"1000m","memory":"1Gi"},"requests":{"cpu":"200m","memory":"64Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsNonRoot":true,"runAsUser":65532,"seccompProfile":{"type":"RuntimeDefault"}},"sourceInterval":"30s"}` | Branch Planner-specific configurations |
 | caCertValidityDuration | string | `"168h0m"` | Argument for `--ca-cert-validity-duration` (Controller) |
 | certRotationCheckFrequency | string | `"30m0s"` | Argument for `--cert-rotation-check-frequency` (Controller) |
 | clusterDomain | string | `"cluster.local"` | Argument for `--cluster-domain` (Controller).  ClusterDomain indicates the cluster domain, defaults to cluster.local. |
@@ -52,7 +52,7 @@ __Note__: If you need to use the `imagePullSecrets` it would be best to set `ser
 | extraEnv | object | `{}` | Additional container environment variables. |
 | fullnameOverride | string | `""` | Provide a fullname |
 | image.pullPolicy | string | `"IfNotPresent"` | Controller image pull policy |
-| image.repository | string | `"ghcr.io/flux-iac/tofu-controller"` | Controller image repository |
+| image.repository | string | `"ghcr.io/ishioni/tofu-controller"` | Controller image repository |
 | image.tag | string | `.Chart.AppVersion` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Controller image pull secret |
 | kubeAPIBurst | int | `100` | Argument for `--kube-api-burst` (Controller).  Burst indicates the maximum burst queries-per-second of requests sent to the Kubernetes API, defaults to 100. |
@@ -82,10 +82,10 @@ __Note__: If you need to use the `imagePullSecrets` it would be best to set `ser
 | rbac.create | bool | `true` | If `true`, create and use RBAC resources |
 | replicaCount | int | `1` | Number of tofu-controller pods to deploy |
 | resources | object | `{"limits":{"cpu":"1000m","memory":"1Gi"},"requests":{"cpu":"200m","memory":"64Mi"}}` | Resource limits and requests |
-| runner | object | `{"creationTimeout":"5m0s","grpc":{"maxMessageSize":4},"image":{"repository":"ghcr.io/flux-iac/tf-runner","tag":"v0.16.4"},"serviceAccount":{"allowedNamespaces":["flux-system"],"annotations":{},"create":true,"name":""}}` | Runner-specific configurations |
+| runner | object | `{"creationTimeout":"5m0s","grpc":{"maxMessageSize":4},"image":{"repository":"ghcr.io/ishioni/tf-runner","tag":"v0.16.5-ishioni.1"},"serviceAccount":{"allowedNamespaces":["flux-system"],"annotations":{},"create":true,"name":""}}` | Runner-specific configurations |
 | runner.creationTimeout | string | `"5m0s"` | Timeout for runner-creation (Controller) |
 | runner.grpc.maxMessageSize | int | `4` | Maximum GRPC message size (Controller) |
-| runner.image.repository | string | `"ghcr.io/flux-iac/tf-runner"` | Runner image repository |
+| runner.image.repository | string | `"ghcr.io/ishioni/tf-runner"` | Runner image repository |
 | runner.image.tag | string | `.Chart.AppVersion` | Runner image tag |
 | runner.serviceAccount.allowedNamespaces | list | `["flux-system"]` | List of namespaces that the runner may run within (in addition to namespace of the controller itself) |
 | runner.serviceAccount.annotations | object | `{}` | Additional runner service Account annotations |
