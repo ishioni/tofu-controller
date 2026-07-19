@@ -8,4 +8,4 @@ generatorOptions:
 images:
   - name: ghcr.io/ishioni/tofu-controller
     newName: ghcr.io/ishioni/tofu-controller
-    newTag: v0.16.5-ishioni.1
+    newTag: v0.16.5-ishioni.2
